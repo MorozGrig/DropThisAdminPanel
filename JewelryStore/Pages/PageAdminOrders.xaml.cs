@@ -22,7 +22,7 @@ namespace JewelryStore.Pages
 
         private void LoadData()
         {
-            OrdersList = db.Orders.Include("StatusOrder").ToList();
+            OrdersList = db.Orders.Include("StatusOrders").ToList();
             StatusList = db.StatusOrders.ToList();
             OrdersGrid.ItemsSource = OrdersList;
         }
@@ -31,6 +31,14 @@ namespace JewelryStore.Pages
         {
             LoadData();
             MessageBox.Show("Список обновлён!");
+        }
+
+        private void OrderInfo_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is int orderId)
+            {
+                NavigationService?.Navigate(new PageOrderDetails(orderId));
+            }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)

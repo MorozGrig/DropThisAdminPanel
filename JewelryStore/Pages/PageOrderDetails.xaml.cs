@@ -1,18 +1,8 @@
 ﻿using JewelryStore.AppData;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace JewelryStore.Pages
 {
@@ -29,9 +19,13 @@ namespace JewelryStore.Pages
 
         private void LoadOrderDetails(int orderId)
         {
-            using (var db = ShoppingCart.GetNewContext())
+            var db = AppConnect.model0db;
+
+            var order = db.Orders.FirstOrDefault(o => o.IdOrder == orderId);
+
+            if (order != null)
             {
-                var orderItems = db.OrderItem
+                var orderItems = db.OrderItems
                     .Where(oi => oi.IdOrder == orderId)
                     .Select(oi => new
                     {
@@ -39,24 +33,23 @@ namespace JewelryStore.Pages
                         oi.Quantity,
                         oi.UnitPrice,
                         oi.TotalPrice,
-                        Jewelries = oi.Jewelries,
-                        JewelryTips = oi.Jewelries.JewelryTips
-                    }).ToList();
+                        Jewelry = oi.Jewelries,
+                        JewelryTip = oi.Jewelries.JewelryTips
+                    })
+                    .ToList();
 
-                var order = db.Order.FirstOrDefault(o => o.IdOrder == orderId);
-
-                if (order != null)
-                {
-                    tbOrderNumber.Text = $"Заказ #{order.IdOrder}";
-                    listOrderItems.ItemsSource = orderItems;
-                    tbOrderTotal.Text = $"Итого: {order.TotalPrice:N0} руб.";
-                }
+                tbOrderNumber.Text = $"Заказ #{order.IdOrder}";
+                listOrderItems.ItemsSource = orderItems;
+                tbOrderTotal.Text = $"Итого: {order.TotalPrice:N0} руб.";
             }
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            AppFrame.framemain.Navigate(new PageUserOrders());
+            if (NavigationService != null && NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
+            }
         }
     }
 }
