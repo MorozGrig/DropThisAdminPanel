@@ -9,9 +9,9 @@ namespace JewelryStore.Pages
 {
     public partial class PageAdminOrders : Page
     {
-        private JewelryStoreEntities db;
-        public List<Order> OrdersList { get; set; }
-        public List<StatusOrder> StatusList { get; set; }
+        private DropThisDatabaseEntities db;
+        public List<Orders> OrdersList { get; set; }
+        public List<StatusOrders> StatusList { get; set; }
 
         public PageAdminOrders()
         {
@@ -22,8 +22,8 @@ namespace JewelryStore.Pages
 
         private void LoadData()
         {
-            OrdersList = db.Order.Include("StatusOrder").ToList();
-            StatusList = db.StatusOrder.ToList();
+            OrdersList = db.Orders.Include("StatusOrder").ToList();
+            StatusList = db.StatusOrders.ToList();
             OrdersGrid.ItemsSource = OrdersList;
         }
 

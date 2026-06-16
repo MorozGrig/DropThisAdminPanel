@@ -12,15 +12,20 @@ namespace JewelryStore.AppData
     using System;
     using System.Collections.Generic;
     
-    public partial class CartItem
+    public partial class Stones
     {
-        public int IdCartItem { get; set; }
-        public Nullable<int> IdJewelry { get; set; }
-        public Nullable<int> IdUser { get; set; }
-        public Nullable<int> Quantity { get; set; }
-        public Nullable<System.DateTime> AddedData { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Stones()
+        {
+            this.Jewelries = new HashSet<Jewelries>();
+        }
     
-        public virtual Jewelry Jewelry { get; set; }
-        public virtual User User { get; set; }
+        public int IdStone { get; set; }
+        public string NameStone { get; set; }
+        public string ColorStone { get; set; }
+        public float WeightStone { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Jewelries> Jewelries { get; set; }
     }
 }

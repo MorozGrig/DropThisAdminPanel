@@ -13,10 +13,10 @@ namespace JewelryStore.AppData
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class JewelryStoreEntities : DbContext
+    public partial class DropThisDatabaseEntities : DbContext
     {
-        public JewelryStoreEntities()
-            : base("name=JewelryStoreEntities")
+        public DropThisDatabaseEntities()
+            : base("name=DropThisDatabaseEntities")
         {
         }
     
@@ -25,17 +25,17 @@ namespace JewelryStore.AppData
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<C__EFMigrationsHistory> C__EFMigrationsHistory { get; set; }
+        public virtual DbSet<Jewelries> Jewelries { get; set; }
+        public virtual DbSet<JewelryTips> JewelryTips { get; set; }
+        public virtual DbSet<Materials> Materials { get; set; }
+        public virtual DbSet<OrderItems> OrderItems { get; set; }
+        public virtual DbSet<Orders> Orders { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
+        public virtual DbSet<StatusOrders> StatusOrders { get; set; }
+        public virtual DbSet<Stones> Stones { get; set; }
+        public virtual DbSet<Suppliers> Suppliers { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<CartItem> CartItem { get; set; }
-        public virtual DbSet<Jewelry> Jewelry { get; set; }
-        public virtual DbSet<JewelryTip> JewelryTip { get; set; }
-        public virtual DbSet<Material> Material { get; set; }
-        public virtual DbSet<Order> Order { get; set; }
-        public virtual DbSet<OrderItem> OrderItem { get; set; }
-        public virtual DbSet<StatusOrder> StatusOrder { get; set; }
-        public virtual DbSet<Stone> Stone { get; set; }
-        public virtual DbSet<Supplier> Supplier { get; set; }
-        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }

@@ -12,18 +12,23 @@ namespace JewelryStore.AppData
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Role()
+        public Users()
         {
-            this.User = new HashSet<User>();
+            this.Orders = new HashSet<Orders>();
         }
     
+        public int IdUser { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
         public int IdRole { get; set; }
-        public string NameRole { get; set; }
+        public string Phone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> User { get; set; }
+        public virtual ICollection<Orders> Orders { get; set; }
+        public virtual Roles Roles { get; set; }
     }
 }

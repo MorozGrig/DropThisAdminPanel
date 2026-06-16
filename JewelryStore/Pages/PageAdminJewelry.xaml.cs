@@ -36,7 +36,7 @@ namespace JewelryStore.Pages
         {
             try
             {
-                listProduct.ItemsSource = AppData.AppConnect.model0db.Jewelry.ToList();
+                listProduct.ItemsSource = AppData.AppConnect.model0db.Jewelries.ToList();
                 tbCounter.Text = $"Всего товаров: {listProduct.Items.Count}";
             }
             catch (Exception ex)
@@ -58,7 +58,7 @@ namespace JewelryStore.Pages
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (listProduct.SelectedItem is Jewelry selectedJewelry)
+            if (listProduct.SelectedItem is Jewelries selectedJewelry)
             {
                 var page = new PageAddEditJewelry();
                 page.JewelryToEdit = selectedJewelry;
@@ -68,7 +68,7 @@ namespace JewelryStore.Pages
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (listProduct.SelectedItem is Jewelry selectedJewelry)
+            if (listProduct.SelectedItem is Jewelries selectedJewelry)
             {
                 var result = MessageBox.Show($"Удалить товар '{selectedJewelry.NameJewelry}'?",
                     "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -78,9 +78,9 @@ namespace JewelryStore.Pages
 
                 try
                 {
-                    using (var db = new JewelryStoreEntities())
+                    using (var db = new DropThisDatabaseEntities())
                     {
-                        bool hasOrders = db.OrderItem.Any(o => o.IdJewelry == selectedJewelry.IdJewelry);
+                        bool hasOrders = db.OrderItems.Any(o => o.IdJewelry == selectedJewelry.IdJewelry);
                         if (hasOrders)
                         {
                             MessageBox.Show("Нельзя удалить товар, он присутствует в заказах.",
@@ -88,7 +88,7 @@ namespace JewelryStore.Pages
                             return;
                         }
 
-                        var jewelryToDelete = db.Jewelry.Find(selectedJewelry.IdJewelry);
+                        var jewelryToDelete = db.Jewelries.Find(selectedJewelry.IdJewelry);
                         if (jewelryToDelete == null)
                         {
                             MessageBox.Show("Товар не найден в базе данных.",
@@ -96,7 +96,7 @@ namespace JewelryStore.Pages
                             return;
                         }
 
-                        db.Jewelry.Remove(jewelryToDelete);
+                        db.Jewelries.Remove(jewelryToDelete);
                         db.SaveChanges();
 
                         MessageBox.Show("✅ Товар удален!");

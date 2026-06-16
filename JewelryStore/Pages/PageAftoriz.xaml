@@ -90,18 +90,6 @@
                     FontWeight="Bold"
                     Click="DaBtn_Click"/>
 
-            <Button Grid.Row="6"
-                    x:Name="Regtodt"
-                    Content="Регистрация" 
-                    Margin="0,10,0,0"
-                    Height="40" 
-                    FontFamily="Nirmala UI" 
-                    FontSize="18" 
-                    Foreground="Black"  
-                    Background="White" 
-                    FontWeight="Bold"
-                    Click="Regtodt_Click"/>
-
         </Grid>
     </Grid>
 </Page>

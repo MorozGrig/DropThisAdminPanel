@@ -144,17 +144,17 @@
     </Compile>
     <Compile Include="AppData\AppConnect.cs" />
     <Compile Include="AppData\AppFrame.cs" />
-    <Compile Include="AppData\CartItem.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="AppData\CurrentUser.cs" />
-    <Compile Include="AppData\Jewelry.cs">
+    <Compile Include="AppData\C__EFMigrationsHistory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppData\JewelryTip.cs">
+    <Compile Include="AppData\Jewelries.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppData\Material.cs">
+    <Compile Include="AppData\JewelryTips.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\Materials.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\Model1.Context.cs">
@@ -172,28 +172,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="AppData\Order.cs">
+    <Compile Include="AppData\OrderItems.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppData\OrderItem.cs">
+    <Compile Include="AppData\Orders.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppData\Role.cs">
+    <Compile Include="AppData\Roles.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppData\StatusOrder.cs">
+    <Compile Include="AppData\StatusOrders.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppData\Stone.cs">
+    <Compile Include="AppData\Stones.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppData\Supplier.cs">
+    <Compile Include="AppData\Suppliers.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppData\User.cs">
+    <Compile Include="AppData\Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
@@ -228,27 +228,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\PageCart.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\PageCheckout.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\PageJewelryCatalog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PageOrderDetails.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\PageReg.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\PageUserOrders.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -275,23 +259,11 @@
     <Compile Include="Pages\PageAftoriz.xaml.cs">
       <DependentUpon>PageAftoriz.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PageCart.xaml.cs">
-      <DependentUpon>PageCart.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\PageCheckout.xaml.cs">
-      <DependentUpon>PageCheckout.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\PageJewelryCatalog.xaml.cs">
       <DependentUpon>PageJewelryCatalog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PageOrderDetails.xaml.cs">
       <DependentUpon>PageOrderDetails.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\PageReg.xaml.cs">
-      <DependentUpon>PageReg.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\PageUserOrders.xaml.cs">
-      <DependentUpon>PageUserOrders.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -326,16 +298,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="AppData\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="AppData\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\sergirub_1.jpg" />
     <Resource Include="Images\bar.jpg" />
     <Resource Include="Images\cul.jpg" />

@@ -12,19 +12,31 @@ namespace JewelryStore.AppData
     using System;
     using System.Collections.Generic;
     
-    public partial class Material
+    public partial class Jewelries
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Material()
+        public Jewelries()
         {
-            this.Jewelry = new HashSet<Jewelry>();
+            this.OrderItems = new HashSet<OrderItems>();
+            this.Orders = new HashSet<Orders>();
         }
     
+        public int IdJewelry { get; set; }
+        public string NameJewelry { get; set; }
+        public int IdJewelryTip { get; set; }
         public int IdMaterial { get; set; }
-        public string NameMaterial { get; set; }
-        public Nullable<int> Proba { get; set; }
+        public int IdStone { get; set; }
+        public int IdSupplier { get; set; }
+        public int PriceJewelry { get; set; }
+        public string ImagePath { get; set; }
     
+        public virtual JewelryTips JewelryTips { get; set; }
+        public virtual Materials Materials { get; set; }
+        public virtual Stones Stones { get; set; }
+        public virtual Suppliers Suppliers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Jewelry> Jewelry { get; set; }
+        public virtual ICollection<OrderItems> OrderItems { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Orders> Orders { get; set; }
     }
 }

@@ -9,9 +9,9 @@ namespace JewelryStore.Pages
 {
     public partial class PageAdminUsers : Page
     {
-        private JewelryStoreEntities db;
-        public ObservableCollection<User> UsersList { get; set; }
-        public ObservableCollection<Role> RoleList { get; set; }
+        private DropThisDatabaseEntities db;
+        public ObservableCollection<Users> UsersList { get; set; }
+        public ObservableCollection<Roles> RoleList { get; set; }
         private bool _isEdited = false;
 
         public PageAdminUsers()
@@ -23,8 +23,8 @@ namespace JewelryStore.Pages
 
         private void LoadData()
         {
-            UsersList = new ObservableCollection<User>(db.User.Include("Role").ToList());
-            RoleList = new ObservableCollection<Role>(db.Role.ToList());
+            UsersList = new ObservableCollection<Users>(db.Users.Include("Role").ToList());
+            RoleList = new ObservableCollection<Roles>(db.Roles.ToList());
             UsersGrid.ItemsSource = UsersList;
             _isEdited = false;
             SaveBtn.IsEnabled = false;
@@ -52,14 +52,14 @@ namespace JewelryStore.Pages
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            if (UsersGrid.SelectedItem is User selectedUser && selectedUser.IdUser != CurrentUser.IdUser)
+            if (UsersGrid.SelectedItem is Users selectedUser && selectedUser.IdUser != CurrentUser.IdUser)
             {
                 if (MessageBox.Show($"Удалить пользователя {selectedUser.Login}?", "Подтверждение",
                     MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     try
                     {
-                        db.User.Remove(selectedUser);
+                        db.Users.Remove(selectedUser);
                         db.SaveChanges();
                         LoadData();
                         MessageBox.Show("Пользователь удалён!");

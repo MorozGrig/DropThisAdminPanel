@@ -4,31 +4,29 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9532105a1e12442ab64e3d1fbd4d7fef" Name="Diagram1" ZoomLevel="64">
-        <EntityTypeShape EntityType="JewelryStoreModel.Role" Width="1.5" PointX="0.625" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="JewelryStoreModel.sysdiagrams" Width="1.5" PointX="11.5" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="JewelryStoreModel.CartItem" Width="1.5" PointX="5.25" PointY="3.5" />
-        <EntityTypeShape EntityType="JewelryStoreModel.Jewelry" Width="1.5" PointX="3" PointY="2.75" />
-        <EntityTypeShape EntityType="JewelryStoreModel.JewelryTip" Width="1.5" PointX="0.75" PointY="3.875" />
-        <EntityTypeShape EntityType="JewelryStoreModel.Material" Width="1.5" PointX="0.75" PointY="1" />
-        <EntityTypeShape EntityType="JewelryStoreModel.Order" Width="1.5" PointX="8.25" PointY="2.75" />
-        <EntityTypeShape EntityType="JewelryStoreModel.OrderItem" Width="1.5" PointX="10.5" PointY="1.375" />
-        <EntityTypeShape EntityType="JewelryStoreModel.StatusOrder" Width="1.5" PointX="6" PointY="0.875" />
-        <EntityTypeShape EntityType="JewelryStoreModel.Stone" Width="1.5" PointX="0.75" PointY="6.625" />
-        <EntityTypeShape EntityType="JewelryStoreModel.Supplier" Width="1.5" PointX="0.75" PointY="9.375" />
-        <EntityTypeShape EntityType="JewelryStoreModel.User" Width="1.5" PointX="3" PointY="9.25" />
-        <AssociationConnector Association="JewelryStoreModel.FK_CartItem_Jewelry" />
-        <AssociationConnector Association="JewelryStoreModel.FK_CartItem_User" />
-        <AssociationConnector Association="JewelryStoreModel.FK_Jewelry_JewelryTip" />
-        <AssociationConnector Association="JewelryStoreModel.FK_Jewelry_Material" />
-        <AssociationConnector Association="JewelryStoreModel.FK_Jewelry_Stone" />
-        <AssociationConnector Association="JewelryStoreModel.FK_Jewelry_Supplier" />
-        <AssociationConnector Association="JewelryStoreModel.FK_Order_Jewelry" />
-        <AssociationConnector Association="JewelryStoreModel.FK_OrderItem_Jewelry" />
-        <AssociationConnector Association="JewelryStoreModel.FK_Order_StatusOrder" />
-        <AssociationConnector Association="JewelryStoreModel.FK_Order_User" />
-        <AssociationConnector Association="JewelryStoreModel.FK_OrderItem_Order" />
-        <AssociationConnector Association="JewelryStoreModel.FK_User_Role" />
+      <Diagram DiagramId="dfdaa8f751674896a12b7ae67248f320" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="DropThisDatabaseModel.C__EFMigrationsHistory" Width="1.5" PointX="2.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DropThisDatabaseModel.Jewelries" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DropThisDatabaseModel.JewelryTips" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DropThisDatabaseModel.Materials" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DropThisDatabaseModel.OrderItems" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DropThisDatabaseModel.Orders" Width="1.5" PointX="8.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DropThisDatabaseModel.Roles" Width="1.5" PointX="3.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DropThisDatabaseModel.StatusOrders" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DropThisDatabaseModel.Stones" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DropThisDatabaseModel.Suppliers" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DropThisDatabaseModel.sysdiagrams" Width="1.5" PointX="8.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DropThisDatabaseModel.Users" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="DropThisDatabaseModel.FK_Jewelries_JewelryTips_IdJewelryTip" ManuallyRouted="false" />
+        <AssociationConnector Association="DropThisDatabaseModel.FK_Jewelries_Materials_IdMaterial" ManuallyRouted="false" />
+        <AssociationConnector Association="DropThisDatabaseModel.FK_Jewelries_Stones_IdStone" ManuallyRouted="false" />
+        <AssociationConnector Association="DropThisDatabaseModel.FK_Jewelries_Suppliers_IdSupplier" ManuallyRouted="false" />
+        <AssociationConnector Association="DropThisDatabaseModel.FK_OrderItems_Jewelries_IdJewelry" ManuallyRouted="false" />
+        <AssociationConnector Association="DropThisDatabaseModel.FK_Orders_Jewelries_IdJewelry" ManuallyRouted="false" />
+        <AssociationConnector Association="DropThisDatabaseModel.FK_OrderItems_Orders_IdOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="DropThisDatabaseModel.FK_Orders_StatusOrders_IdStatusOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="DropThisDatabaseModel.FK_Orders_Users_IdUser" ManuallyRouted="false" />
+        <AssociationConnector Association="DropThisDatabaseModel.FK_Users_Roles_IdRole" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

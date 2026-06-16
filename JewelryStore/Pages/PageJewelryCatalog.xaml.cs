@@ -24,10 +24,9 @@ namespace JewelryStore.Pages
         public PageJewelryCatalog()
         {
             InitializeComponent();
-            listProduct.ItemsSource = AppConnect.model0db.Jewelry.ToList();
+            listProduct.ItemsSource = AppConnect.model0db.Jewelries.ToList();
             Fill();
             this.Loaded += Jc;
-            CheckOrdersButtonState();
         }
         public void Fill()
         {
@@ -37,7 +36,7 @@ namespace JewelryStore.Pages
             ComdoSort.SelectedIndex = 0;
             ComboFilter.Items.Add("Тип украшения");
 
-            var jewelryTips = AppConnect.model0db.JewelryTip.ToList();
+            var jewelryTips = AppConnect.model0db.JewelryTips.ToList();
             foreach (var tip in jewelryTips)
             {
                 ComboFilter.Items.Add(tip.NameJewelryTip);
@@ -45,7 +44,7 @@ namespace JewelryStore.Pages
 
             ComdoMat.Items.Add("Тип материала");
 
-            var materials = AppConnect.model0db.Material.ToList();
+            var materials = AppConnect.model0db.Materials.ToList();
             foreach (var mat in materials)
             {
                 ComdoMat.Items.Add($"{mat.NameMaterial} ({mat.Proba})");
@@ -53,7 +52,7 @@ namespace JewelryStore.Pages
 
             ComdoStone.Items.Add("Тип камня");
 
-            var stones = AppConnect.model0db.Stone.ToList();
+            var stones = AppConnect.model0db.Stones.ToList();
             foreach (var stone in stones)
             {
                 ComdoStone.Items.Add(stone.NameStone);
@@ -61,7 +60,7 @@ namespace JewelryStore.Pages
 
             ComdoSup.Items.Add("Бренд");
 
-            var suppliers = AppConnect.model0db.Supplier.ToList();
+            var suppliers = AppConnect.model0db.Suppliers.ToList();
             foreach (var sup in suppliers)
             {
                 ComdoSup.Items.Add(sup.NameSupplier);
@@ -79,11 +78,11 @@ namespace JewelryStore.Pages
             ComdoSup.SelectedIndex = 0;
             TextSearch.Text = string.Empty;
         }
-        Jewelry[] JewelriesList()
+        Jewelries[] JewelriesList()
         {
             try
             {
-                List<Jewelry> recipes = AppConnect.model0db.Jewelry.ToList();
+                List<Jewelries> recipes = AppConnect.model0db.Jewelries.ToList();
                 if (TextSearch != null)
                 {
                     recipes = recipes.Where(x => x.NameJewelry.ToLower().Contains(TextSearch.Text.ToLower())).ToList();
@@ -299,7 +298,6 @@ namespace JewelryStore.Pages
             {
                 this.MinWidth = 1350;
                 this.MinHeight = 700;
-                CheckOrdersButtonState();
             }
         }
 
@@ -323,38 +321,9 @@ namespace JewelryStore.Pages
 
         }
 
-        private void AddToCart_Click(object sender, RoutedEventArgs e)
-        {
-            if (sender is Button button && int.TryParse(button.Tag?.ToString(), out int jewelryId))
-            {
-                ShoppingCart.AddItem(jewelryId);
-                MessageBox.Show("Добавлено в корзину!");
-            }
-        }
-
-        private void CartBut_Click(object sender, RoutedEventArgs e)
-        {
-            AppFrame.framemain.Navigate(new PageCart());
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             AppFrame.framemain.Navigate(new PageUserOrders());
-        }
-
-        private void CheckOrdersButtonState()
-        {
-            bool hasOrders = false;
-
-            if (CurrentUser.IdUser.HasValue)
-            {
-                using (var db = ShoppingCart.GetNewContext())
-                {
-                    hasOrders = db.Order.Any(o => o.IdUser == CurrentUser.IdUser);
-                }
-            }
-            OrderBut.IsEnabled = hasOrders;
-            OrderBut.Opacity = hasOrders ? 1.0 : 0.5;
         }
     }
 }

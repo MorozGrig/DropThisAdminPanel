@@ -27,12 +27,6 @@ namespace JewelryStore.Pages
             this.Loaded += Aftor_Loaded;
         }
 
-        private void Regtodt_Click(object sender, RoutedEventArgs e)
-        {
-            AppFrame.framemain.Navigate(new PageReg());
-
-        }
-
         private void DaBtn_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(TextLogin.Text?.Trim()))
@@ -66,32 +60,24 @@ namespace JewelryStore.Pages
 
             try
             {
-                var userObj = AppData.AppConnect.model0db.User.FirstOrDefault(x => x.Login == TextLogin.Text && x.Password == PassBox.Password);
-                if (userObj == null)
+                var userObj = AppData.AppConnect.model0db.Users.FirstOrDefault(x => x.Login == TextLogin.Text && x.Password == PassBox.Password);
+                if (userObj == null || userObj.IdRole != 2)
                 {
-                    MessageBox.Show("Такого пользователя нет", "Ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Такого админстратора нет!", "Ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
                 CurrentUser.IdUser = userObj.IdUser;
                 CurrentUser.Login = userObj.Login;
-                CurrentUser.IdRole = userObj.IdRole??0;
 
-                MessageBox.Show($"Добро пожаловать, {userObj.Login}! (Роль: {(CurrentUser.IsAdmin ? "Админ" : "Клиент")})");
+                MessageBox.Show($"Добро пожаловать, {userObj.Login}!");
+                AppFrame.framemain.Navigate(new PageAdminPanel());
 
-                if (CurrentUser.IsAdmin)
-                    AppFrame.framemain.Navigate(new PageAdminPanel());
-                else
-                    AppFrame.framemain.Navigate(new PageJewelryCatalog());
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Ошибка: " + ex.Message);
             }
-        }
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            AppFrame.framemain.Navigate(new PageReg());
         }
 
         private void Aftor_Loaded(object sender, RoutedEventArgs e)

@@ -12,16 +12,18 @@ namespace JewelryStore.AppData
     using System;
     using System.Collections.Generic;
     
-    public partial class OrderItem
+    public partial class Roles
     {
-        public int IdOrderItem { get; set; }
-        public Nullable<int> IdOrder { get; set; }
-        public int IdJewelry { get; set; }
-        public Nullable<int> Quantity { get; set; }
-        public Nullable<decimal> UnitPrice { get; set; }
-        public Nullable<decimal> TotalPrice { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Roles()
+        {
+            this.Users = new HashSet<Users>();
+        }
     
-        public virtual Jewelry Jewelry { get; set; }
-        public virtual Order Order { get; set; }
+        public int IdRole { get; set; }
+        public string NameRole { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Users> Users { get; set; }
     }
 }

@@ -39,8 +39,8 @@ namespace JewelryStore.Pages
                         oi.Quantity,
                         oi.UnitPrice,
                         oi.TotalPrice,
-                        Jewelry = oi.Jewelry,
-                        JewelryTip = oi.Jewelry.JewelryTip
+                        Jewelries = oi.Jewelries,
+                        JewelryTips = oi.Jewelries.JewelryTips
                     }).ToList();
 
                 var order = db.Order.FirstOrDefault(o => o.IdOrder == orderId);

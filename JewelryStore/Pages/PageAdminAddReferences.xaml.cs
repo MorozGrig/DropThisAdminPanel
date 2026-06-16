@@ -8,7 +8,7 @@ namespace JewelryStore.Pages
 {
     public partial class PageAdminAddReferences : Page
     {
-        private JewelryStoreEntities db = AppConnect.model0db;
+        private DropThisDatabaseEntities db = AppConnect.model0db;
 
         public PageAdminAddReferences()
         {
@@ -33,27 +33,27 @@ namespace JewelryStore.Pages
 
         private void LoadJewelryTipList()
         {
-            listJewelryTip.ItemsSource = db.JewelryTip.ToList();
+            listJewelryTip.ItemsSource = db.JewelryTips.ToList();
         }
 
         private void LoadMaterialList()
         {
-            listMaterial.ItemsSource = db.Material.ToList();
+            listMaterial.ItemsSource = db.Materials.ToList();
         }
 
         private void LoadStoneList()
         {
-            listStone.ItemsSource = db.Stone.ToList();
+            listStone.ItemsSource = db.Stones.ToList();
         }
 
         private void LoadSupplierList()
         {
-            listSupplier.ItemsSource = db.Supplier.ToList();
+            listSupplier.ItemsSource = db.Suppliers.ToList();
         }
 
         private void LoadStatusOrderList()
         {
-            listStatusOrder.ItemsSource = db.StatusOrder.ToList();
+            listStatusOrder.ItemsSource = db.StatusOrders.ToList();
         }
 
         private void AddJewelryTip_Click(object sender, RoutedEventArgs e)
@@ -75,7 +75,7 @@ namespace JewelryStore.Pages
 
             try
             {
-                db.JewelryTip.Add(new JewelryTip
+                db.JewelryTips.Add(new JewelryTips
                 {
                     NameJewelryTip = TipNameTxt.Text.Trim()
                 });
@@ -119,7 +119,7 @@ namespace JewelryStore.Pages
 
             try
             {
-                db.Material.Add(new Material
+                db.Materials.Add(new Materials
                 {
                     NameMaterial = MatNameTxt.Text.Trim(),
                     Proba = proba
@@ -148,9 +148,9 @@ namespace JewelryStore.Pages
                 return;
             }
 
-            if (!double.TryParse(StoneWeightTxt.Text, out double weight) || weight <= 0 || weight > 1000)
+            if (!float.TryParse(StoneWeightTxt.Text, out float weight) || weight <= 0 || weight > 100)
             {
-                MessageBox.Show("Введите корректный вес камня (число от 0.01 до 1000)!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Введите корректный вес камня (число от 0.01 до 99.99)!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
                 StoneWeightTxt.Focus();
                 StoneWeightTxt.SelectAll();
                 return;
@@ -165,7 +165,7 @@ namespace JewelryStore.Pages
 
             try
             {
-                db.Stone.Add(new Stone
+                db.Stones.Add(new Stones
                 {
                     NameStone = StoneNameTxt.Text.Trim(),
                     ColorStone = StoneColorTxt.Text?.Trim(),
@@ -223,7 +223,7 @@ namespace JewelryStore.Pages
 
             try
             {
-                db.Supplier.Add(new Supplier
+                db.Suppliers.Add(new Suppliers
                 {
                     NameSupplier = SuppNameTxt.Text.Trim(),
                     PhoneSupplier = SuppPhoneTxt.Text?.Trim(),
@@ -262,7 +262,7 @@ namespace JewelryStore.Pages
 
             try
             {
-                db.StatusOrder.Add(new StatusOrder
+                db.StatusOrders.Add(new StatusOrders
                 {
                     NameStatusOrder = StatusNameTxt.Text.Trim()
                 });

@@ -12,30 +12,19 @@ namespace JewelryStore.AppData
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class Materials
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
+        public Materials()
         {
-            this.OrderItem = new HashSet<OrderItem>();
+            this.Jewelries = new HashSet<Jewelries>();
         }
     
-        public int IdOrder { get; set; }
-        public Nullable<int> IdUser { get; set; }
-        public Nullable<int> IdJewelry { get; set; }
-        public string CustomerName { get; set; }
-        public string CustomerPhone { get; set; }
-        public string CustomerEmail { get; set; }
-        public string DeliveryAddress { get; set; }
-        public Nullable<int> IdStatusOrder { get; set; }
-        public Nullable<System.DateTime> OrderDate { get; set; }
-        public Nullable<int> Quantity { get; set; }
-        public Nullable<decimal> TotalPrice { get; set; }
+        public int IdMaterial { get; set; }
+        public string NameMaterial { get; set; }
+        public int Proba { get; set; }
     
-        public virtual Jewelry Jewelry { get; set; }
-        public virtual StatusOrder StatusOrder { get; set; }
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderItem> OrderItem { get; set; }
+        public virtual ICollection<Jewelries> Jewelries { get; set; }
     }
 }

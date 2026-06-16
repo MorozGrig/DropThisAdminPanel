@@ -8,6 +8,6 @@ namespace JewelryStore.AppData
 {
     internal class AppConnect
     {
-        public static JewelryStoreEntities model0db;
+        public static DropThisDatabaseEntities model0db;
     }
 }

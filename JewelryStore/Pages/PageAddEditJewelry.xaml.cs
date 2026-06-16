@@ -10,7 +10,7 @@ namespace JewelryStore.Pages
 {
     public partial class PageAddEditJewelry : Page
     {
-        public Jewelry JewelryToEdit { get; set; } 
+        public Jewelries JewelryToEdit { get; set; } 
 
         public PageAddEditJewelry()
         {
@@ -34,7 +34,7 @@ namespace JewelryStore.Pages
                 MaterialCombo.SelectedValue = JewelryToEdit.IdMaterial;
                 StoneCombo.SelectedValue = JewelryToEdit.IdStone;
                 SupplierCombo.SelectedValue = JewelryToEdit.IdSupplier;
-                PriceText.Text = JewelryToEdit.PriceJewelry?.ToString("0.00");
+                PriceText.Text = JewelryToEdit.PriceJewelry.ToString("0.00");
                 ImagePathText.Text = JewelryToEdit.ImagePath?.Trim();
 
                 SaveButton.Content = "✏️ Обновить";
@@ -50,12 +50,12 @@ namespace JewelryStore.Pages
         {
             try
             {
-                using (var db = new JewelryStoreEntities())
+                using (var db = new DropThisDatabaseEntities())
                 {
-                    JewelryTipCombo.ItemsSource = db.JewelryTip.ToList();
-                    MaterialCombo.ItemsSource = db.Material.ToList();
-                    StoneCombo.ItemsSource = db.Stone.ToList();
-                    SupplierCombo.ItemsSource = db.Supplier.ToList();
+                    JewelryTipCombo.ItemsSource = db.JewelryTips.ToList();
+                    MaterialCombo.ItemsSource = db.Materials.ToList();
+                    StoneCombo.ItemsSource = db.Stones.ToList();
+                    SupplierCombo.ItemsSource = db.Suppliers.ToList();
                 }
             }
             catch (Exception ex)
@@ -125,7 +125,7 @@ namespace JewelryStore.Pages
                 return;
             }
 
-            if (!decimal.TryParse(PriceText.Text, out decimal price) || price <= 0)
+            if (!int.TryParse(PriceText.Text, out int price) || price <= 0)
             {
                 MessageBox.Show("Введите корректную цену.");
                 return;
@@ -133,19 +133,19 @@ namespace JewelryStore.Pages
 
             try
             {
-                using (var db = new JewelryStoreEntities())
+                using (var db = new DropThisDatabaseEntities())
                 {
-                    Jewelry jewelry;
+                    Jewelries jewelry;
 
                     if (JewelryToEdit == null)
                     {
-                        jewelry = new Jewelry();
-                        db.Jewelry.Add(jewelry);
+                        jewelry = new Jewelries();
+                        db.Jewelries.Add(jewelry);
                     }
                     else
                     {
                         int id = JewelryToEdit.IdJewelry;
-                        jewelry = db.Jewelry.FirstOrDefault(x => x.IdJewelry == id);
+                        jewelry = db.Jewelries.FirstOrDefault(x => x.IdJewelry == id);
 
                         if (jewelry == null)
                         {
@@ -157,7 +157,7 @@ namespace JewelryStore.Pages
                     jewelry.NameJewelry = NameJewelryText.Text.Trim();
                     jewelry.IdJewelryTip = (int)JewelryTipCombo.SelectedValue;
                     jewelry.IdMaterial = (int)MaterialCombo.SelectedValue;
-                    jewelry.IdStone = StoneCombo.SelectedValue as int?;
+                    jewelry.IdStone = (int)StoneCombo.SelectedValue;
                     jewelry.IdSupplier = (int)SupplierCombo.SelectedValue;
                     jewelry.PriceJewelry = price;
                     jewelry.ImagePath = !string.IsNullOrWhiteSpace(ImagePathText.Text)
