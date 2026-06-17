@@ -69,6 +69,7 @@ namespace JewelryStore.Pages
 
                 CurrentUser.IdUser = userObj.IdUser;
                 CurrentUser.Login = userObj.Login;
+                CurrentUser.IdRole = userObj.IdRole;
 
                 MessageBox.Show($"Добро пожаловать, {userObj.Login}!");
                 AppFrame.framemain.Navigate(new PageAdminPanel());
@@ -76,7 +77,7 @@ namespace JewelryStore.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка: " + ex.Message);
+                MessageBox.Show("Ошибка: " + ex.ToString());
             }
         }
 

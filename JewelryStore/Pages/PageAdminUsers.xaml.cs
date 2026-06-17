@@ -23,7 +23,7 @@ namespace JewelryStore.Pages
 
         private void LoadData()
         {
-            UsersList = new ObservableCollection<Users>(db.Users.Include("Role").ToList());
+            UsersList = new ObservableCollection<Users>(db.Users.Include("Roles").ToList());
             RoleList = new ObservableCollection<Roles>(db.Roles.ToList());
             UsersGrid.ItemsSource = UsersList;
             _isEdited = false;

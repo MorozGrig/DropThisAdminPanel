@@ -31,11 +31,6 @@ namespace JewelryStore.Pages
             Adminfarme.Navigate(new PageAdminJewelry());
         }
 
-        private void Catalog_Click(object sender, RoutedEventArgs e)
-        {
-            AppFrame.framemain.Navigate(new PageJewelryCatalog());
-        }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Adminfarme.Navigate(new PageAdminOrders());

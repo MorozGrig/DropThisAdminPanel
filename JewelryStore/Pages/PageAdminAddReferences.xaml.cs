@@ -24,11 +24,17 @@ namespace JewelryStore.Pages
                 return;
             }
 
+            LoadStoneColors();
             LoadJewelryTipList();
             LoadMaterialList();
             LoadStoneList();
             LoadSupplierList();
             LoadStatusOrderList();
+        }
+
+        private void LoadStoneColors()
+        {
+            StoneColorTxt.ItemsSource = db.ColorsStounes.ToList();
         }
 
         private void LoadJewelryTipList()
@@ -168,7 +174,7 @@ namespace JewelryStore.Pages
                 db.Stones.Add(new Stones
                 {
                     NameStone = StoneNameTxt.Text.Trim(),
-                    ColorStone = StoneColorTxt.Text?.Trim(),
+                    IdColorStone = (int)StoneColorTxt.SelectedIndex,
                     WeightStone = weight
                 });
 
@@ -176,7 +182,7 @@ namespace JewelryStore.Pages
                 LoadStoneList();
 
                 StoneNameTxt.Clear();
-                StoneColorTxt.Clear();
+                StoneColorTxt.SelectedIndex = -1;
                 StoneWeightTxt.Clear();
                 StoneNameTxt.Focus();
                 MessageBox.Show("✅ Камень добавлен!", "Успех");

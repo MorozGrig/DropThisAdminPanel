@@ -48,20 +48,23 @@
                             <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left">
                                 <TextBlock Height="auto" FontWeight="Bold" FontSize="16" Text="{Binding NameJewelry}"/>
                                 <TextBlock TextWrapping="Wrap" Height="auto" Margin="0,0,0,20">
-                                    <Run Text="Категория: "/><Run Text="{Binding JewelryTip.NameJewelryTip}"/>
+                                    <Run Text="Категория: "/><Run Text="{Binding JewelryTips.NameJewelryTip}"/>
                                 </TextBlock>
                                 <TextBlock TextWrapping="Wrap" Height="auto" Margin="0,0,0,20">
-<Run Text="Материал: "/>
-<Run Text="{Binding NameMaterial}"/>
-<Run Text=" ("/>
-<Run Text="{Binding Material.Proba}"/>
-<Run Text=")"/>
+                                    <Run Text="Материал: "/>
+                                    <Run Text="{Binding NameMaterial}"/>
+                                    <Run Text=" ("/>
+                                    <Run Text="{Binding Materials.Proba}"/>
+                                    <Run Text=")"/>
                                 </TextBlock>
                                 <TextBlock TextWrapping="Wrap" Height="auto" Margin="0,0,0,10">
-                                    <Run Text="Камень: "/><Run Text="{Binding Stone.NameStone}"/>
+                                    <Run Text="Камень: "/><Run Text="{Binding Stones.NameStone}"/>
                                 </TextBlock>
                                 <TextBlock TextWrapping="Wrap" Height="auto">
-                                    <Run Text="Поставщик: "/><Run Text="{Binding Supplier.NameSupplier}"/>
+                                    <Run Text="Поставщик: "/><Run Text="{Binding Suppliers.NameSupplier}"/>
+                                </TextBlock>
+                                <TextBlock TextWrapping="Wrap" Height="auto">
+                                    <Run Text="Остаток: "/><Run Text="{Binding TotalQuantity, Mode=OneWay}"/>
                                 </TextBlock>
                             </StackPanel>
                             <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">

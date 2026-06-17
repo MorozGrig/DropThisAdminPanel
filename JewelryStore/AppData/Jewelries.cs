@@ -19,6 +19,7 @@ namespace JewelryStore.AppData
         {
             this.OrderItems = new HashSet<OrderItems>();
             this.Orders = new HashSet<Orders>();
+            this.WarehouseItems = new HashSet<WarehouseItems>();
         }
     
         public int IdJewelry { get; set; }
@@ -38,5 +39,7 @@ namespace JewelryStore.AppData
         public virtual ICollection<OrderItems> OrderItems { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<WarehouseItems> WarehouseItems { get; set; }
     }
 }

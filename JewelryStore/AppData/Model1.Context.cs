@@ -26,16 +26,21 @@ namespace JewelryStore.AppData
         }
     
         public virtual DbSet<C__EFMigrationsHistory> C__EFMigrationsHistory { get; set; }
+        public virtual DbSet<ColorsStounes> ColorsStounes { get; set; }
+        public virtual DbSet<Deliveries> Deliveries { get; set; }
         public virtual DbSet<Jewelries> Jewelries { get; set; }
         public virtual DbSet<JewelryTips> JewelryTips { get; set; }
         public virtual DbSet<Materials> Materials { get; set; }
         public virtual DbSet<OrderItems> OrderItems { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
+        public virtual DbSet<SposobiOplati> SposobiOplati { get; set; }
         public virtual DbSet<StatusOrders> StatusOrders { get; set; }
         public virtual DbSet<Stones> Stones { get; set; }
         public virtual DbSet<Suppliers> Suppliers { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<WarehouseItems> WarehouseItems { get; set; }
+        public virtual DbSet<Warehouses> Warehouses { get; set; }
     }
 }

@@ -12,21 +12,18 @@ namespace JewelryStore.AppData
     using System;
     using System.Collections.Generic;
     
-    public partial class Stones
+    public partial class ColorsStounes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Stones()
+        public ColorsStounes()
         {
-            this.Jewelries = new HashSet<Jewelries>();
+            this.Stones = new HashSet<Stones>();
         }
     
-        public int IdStone { get; set; }
-        public string NameStone { get; set; }
-        public float WeightStone { get; set; }
         public int IdColorStone { get; set; }
+        public string ColorStone { get; set; }
     
-        public virtual ColorsStounes ColorsStounes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Jewelries> Jewelries { get; set; }
+        public virtual ICollection<Stones> Stones { get; set; }
     }
 }
